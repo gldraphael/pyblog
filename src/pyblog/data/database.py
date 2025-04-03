@@ -15,10 +15,8 @@ class AppDb:
             raise ValueError("create_db() must only be called once.")
         self.__engine = create_engine(conn_str, echo=echo)
         Base.metadata.create_all(self.__engine)
-        print(f"Database initialized by {self}")
 
     def engine(self):
-        print(f"Engine accessed by {self}")
         if self.__engine is None:
             raise ValueError("create_db() must be called once before attempting to use the SQL Alchemy Engine")
         return self.__engine

@@ -1,8 +1,8 @@
 from sqlalchemy import select
 
-from pyblog.core.domain.blogpost import BlogPost
-from pyblog.infrastructure.data.database import AppDb
-from pyblog.infrastructure.data.models.blogpost import BlogPostDAO
+from ...domain.blogpost import BlogPost
+from ..database import AppDb
+from ..models.blogpost import BlogPostDAO
 
 class BlogPostRepository:
 

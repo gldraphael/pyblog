@@ -4,7 +4,7 @@ from typing import Optional
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from pyblog.infrastructure.data.base import Base
+from ..base import Base
 
 class BlogPostDAO(Base):
     __tablename__ = "blog_posts"

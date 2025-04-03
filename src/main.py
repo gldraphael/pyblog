@@ -1,8 +1,6 @@
-from pyblog.api.app import create_app
-from pyblog.app import container
-from pyblog.core.domain.blogpost import BlogPost
-from pyblog.infrastructure.data.repositories.blogpost_repository import BlogPostRepository
-
+from pyblog.containers import Container
+from pyblog.domain.blogpost import BlogPost
+from pyblog.data.repositories.blogpost_repository import BlogPostRepository
 
 
 def print_posts(blogs: BlogPostRepository):
@@ -11,6 +9,7 @@ def print_posts(blogs: BlogPostRepository):
 
 def main():
 
+    container = Container()
     blogs = container.blogpost_repository()
 
     # Create an empty post
@@ -23,7 +22,8 @@ def main():
     post.markdown = """
     # Hello, world!
 
-    It's nice to have you here! Bye 👋
+    It's nice to have you here! 
+    kthxbye 👋
     """
     blogs.update_post(post)
     print_posts(blogs)

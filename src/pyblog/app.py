@@ -1,5 +1,17 @@
-from pyblog.api.app import create_app
-from pyblog.containers import Container
+from fastapi import FastAPI
 
-container = Container()
-app = create_app(container)
+from .endpoints.router import router
+from .containers import Container
+
+def create_app() -> FastAPI:
+    container = Container()
+    db = container.db()
+    db.create_db(conn_str="sqlite://", echo=True)  # todo: read this from config
+    api = FastAPI(
+        title="pyblog",
+        redoc_url="/api"
+    )
+    api.include_router(router=router, prefix="/api")
+    return api
+
+app = create_app()
